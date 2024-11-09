@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-_zxvvw30=)v4wx2n-z51$4cvf!b^3tluv6#y%fdgal7@6^=jz5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".cardapiodeliveryonline.com.br"]
+if DEBUG: 
+    ALLOWED_HOSTS += ["localhost", "127.0.0.1"]
 
 
 # Application definition
