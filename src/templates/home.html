@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{page_title}}
+{% endblock %}
+{% block content %}
+    <p>{{ request.user }}</p>
+    <div>
+        <p>Total Page Visits: {{ visits }}</p>
+        <p>Total Website Visits: {{ total_visits }}</p>
+    </div>
+{% endblock %}
