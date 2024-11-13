@@ -1,6 +1,6 @@
 services:
   django-app:
-    image: alamyrjunior/django-boilerplate:latest
+    build: .
     ports:
       - "8000:8000"
     environment:
