@@ -1,7 +1,6 @@
 services:
   django-app:
     build: .
-    image: django_docker:latest
     ports:
       - "8000:8000"
 
