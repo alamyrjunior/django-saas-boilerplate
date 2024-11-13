@@ -31,4 +31,4 @@ services:
 # Definindo a rede para o serviço
 networks:
   network_public:
-    name: network_public
+    external: true
