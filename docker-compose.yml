@@ -1,35 +1,35 @@
 services:
   django-app:
-    image: alamyrjunior/django-boilerplate:latest  # A imagem que você enviou para o Docker Hub
-    container_name: django-boilerplate-container   # Nome do container
-    restart: always                              # Garantir que o container reinicie automaticamente
+    image: alamyrjunior/django-boilerplate:latest # A imagem que você enviou para o Docker Hub
+    container_name: django-boilerplate-container # Nome do container
+    restart: always # Garantir que o container reinicie automaticamente
     ports:
-      - "8000:8000"                              # Expor a porta 8000 da aplicação Django
+      - "8000:8000" # Expor a porta 8000 da aplicação Django
     environment:
-      - DEBUG=True                               # Defina suas variáveis de ambiente aqui (exemplo: DEBUG=True)
-      - DJANGO_SECRET_KEY=senhatemporariasecretamasnemtanto      # Defina a chave secreta do Django
+      - DEBUG=True # Defina suas variáveis de ambiente aqui (exemplo: DEBUG=True)
+      - DJANGO_SECRET_KEY=senhatemporariasecretamasnemtanto # Defina a chave secreta do Django
     volumes:
-      - ./app:/app                               # Se você for usar um volume local para persistir dados (ajuste conforme necessário)
+      - ./app:/app # Se você for usar um volume local para persistir dados (ajuste conforme necessário)
     networks:
-      - 
- 
+      - network_public
+
     deploy:
       mode: replicated
       replicas: 1
       placement:
         constraints:
-        - node.role == manager
+          - node.role == manager
       labels:
-      - traefik.enable=1
-      - traefik.http.routers.django.rule=Host(`django.cardapiodeliveryonline.com.br`) ## Url da aplicação
-      - traefik.http.routers.django.entrypoints=websecure
-      - traefik.http.routers.django.priority=1
-      - traefik.http.routers.django.certresolver=letsencryptresolver
-      - traefik.http.routers.django.service=evolution_v2
-      - traefik.http.services.django.loadbalancer.server.port=8080
-      - traefik.http.services.django.loadbalancer.passHostHeader=true
-
+        - traefik.enable=1
+        - traefik.http.routers.django.rule=Host(`django.cardapiodeliveryonline.com.br`) ## Url da aplicação
+        - traefik.http.routers.django.entrypoints=websecure
+        - traefik.http.routers.django.priority=1
+        - traefik.http.routers.django.certresolver=letsencryptresolver
+        - traefik.http.routers.django.service=evolution_v2
+        - traefik.http.services.django.loadbalancer.server.port=8080
+        - traefik.http.services.django.loadbalancer.passHostHeader=true
 
 # Definindo a rede para o serviço
 networks:
-  django-net:
+  network_public:
+    name: network_public
