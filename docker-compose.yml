@@ -2,7 +2,6 @@ services:
   django-app:
     image: alamyrjunior/django-boilerplate:latest # A imagem que você enviou para o Docker Hub
     container_name: django-boilerplate-container # Nome do container
-    restart: always # Garantir que o container reinicie automaticamente
     ports:
       - "8000:8000" # Expor a porta 8000 da aplicação Django
     environment:
