@@ -1,6 +1,8 @@
+version: '3.9'
+
 services:
   django-app:
-    build: .
+    build: .  # Faz o build a partir do Dockerfile no diretório atual
     ports:
       - "8000:8000"
     environment:
@@ -8,14 +10,12 @@ services:
       - DJANGO_SECRET_KEY=senhatemporariasecretamasnemtanto
     networks:
       - network_public
-    deploy:
-      mode: global
-      labels:
-        - traefik.enable=1
-        - traefik.http.routers.django.rule=Host(`django.cardapiodeliveryonline.com.br`)
-        - traefik.http.routers.django.entrypoints=websecure
-        - traefik.http.routers.django.certresolver=letsencryptresolver
-        - traefik.http.services.django.loadbalancer.server.port=8000
+    labels:
+      - traefik.enable=1
+      - traefik.http.routers.django.rule=Host(`django.cardapiodeliveryonline.com.br`)
+      - traefik.http.routers.django.entrypoints=websecure
+      - traefik.http.routers.django.certresolver=letsencryptresolver
+      - traefik.http.services.django.loadbalancer.server.port=8000
 
 networks:
   network_public:
