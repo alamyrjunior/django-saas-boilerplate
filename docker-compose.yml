@@ -2,7 +2,6 @@ version: '3.9'
 
 services:
   django-app:
-    build: .  # Faz o build a partir do Dockerfile no diretório atual
     ports:
       - "8000:8000"
     environment:
