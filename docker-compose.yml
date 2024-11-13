@@ -1,8 +1,7 @@
 services:
   django-app:
-    build:
-      context: .  # Define o diretório de contexto como a raiz do seu projeto (onde está o Dockerfile)
-      dockerfile: Dockerfile  # Especifica o nome do Dockerfile se ele estiver na raiz
+    image: django_docker:latest
+
     ports:
       - "8000:8000"
     networks:
