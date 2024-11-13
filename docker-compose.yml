@@ -4,9 +4,7 @@ services:
     image: django_docker:latest
     ports:
       - "8000:8000"
-    environment:
-      - DEBUG=True
-      - DJANGO_SECRET_KEY=senhatemporariasecretamasnemtanto
+
     networks:
       - network_public
     labels:
