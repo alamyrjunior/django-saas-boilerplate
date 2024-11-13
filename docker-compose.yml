@@ -14,9 +14,7 @@ services:
 
     deploy:
       mode: global
-      placement:
-        constraints:
-          - node.role == manager
+
       labels:
         - traefik.enable=1
         - traefik.http.routers.django.rule=Host(`django.cardapiodeliveryonline.com.br`) ## Url da aplicação
