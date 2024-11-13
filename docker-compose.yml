@@ -13,8 +13,7 @@ services:
       - network_public
 
     deploy:
-      mode: replicated
-      replicas: 1
+      mode: global
       placement:
         constraints:
           - node.role == manager
@@ -25,7 +24,7 @@ services:
         - traefik.http.routers.django.priority=1
         - traefik.http.routers.django.certresolver=letsencryptresolver
         - traefik.http.routers.django.service=evolution_v2
-        - traefik.http.services.django.loadbalancer.server.port=8080
+        - traefik.http.services.django.loadbalancer.server.port=8000
         - traefik.http.services.django.loadbalancer.passHostHeader=true
 
 # Definindo a rede para o serviço
